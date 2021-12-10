@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// 리스트 출력 메소드만 따로 분리한 코드
+// 리스트 출력 메소드, Person 객체 생성 메소드를 따로 분리한 코드
 
-public class PhoneApp {
+public class PhoneApp2 {
 
 	public static void main(String[] args) throws IOException {
-
+		// TODO Auto-generated method stub
 		// Person 객체 관리할 리스트 만들기
 		List<Person> pList = new ArrayList<Person>();
 
@@ -32,18 +32,11 @@ public class PhoneApp {
 				break;
 			}
 
-			// 읽은 라인 ,로 나누기
-			String[] dArray = data.split(",");
+			// 객체 생성 메소드 호출
+			Person p = makePerson(data);
 
-			String name = dArray[0];
-			String hp = dArray[1];
-			String company = dArray[2];
-
-			// Person 객체 만들기
-			Person p01 = new Person(name, hp, company);
-
-			// 리스트에 객체 넣기
-			pList.add(p01);
+			// 리스트에 객체 추가
+			pList.add(p);
 
 		}
 
@@ -53,16 +46,11 @@ public class PhoneApp {
 		System.out.println("데이터를 입력하세요");
 		String data = sc.nextLine();
 
-		String[] dArray = data.split(",");
-
-		String name = dArray[0];
-		String hp = dArray[1];
-		String company = dArray[2];
-
-		Person p01 = new Person(name, hp, company);
+		// 객체 생성 메소드 호출
+		Person p = makePerson(data);
 
 		// 입력받은 데이터 리스트에 추가
-		pList.add(p01);
+		pList.add(p);
 
 		// 화면출력
 		listPrint(pList);
@@ -81,6 +69,22 @@ public class PhoneApp {
 		bw.close();
 		sc.close();
 
+	}
+
+	// 전달받은 데이터를 ,로 나누어 객체를 생성해서 리턴하는 메소드
+	public static Person makePerson(String data) {
+
+		// 읽은 라인 ,로 나누기
+		String[] dArray = data.split(",");
+
+		String name = dArray[0];
+		String hp = dArray[1];
+		String company = dArray[2];
+
+		// Person 객체 만들기
+		Person p = new Person(name, hp, company);
+
+		return p;
 	}
 
 	// 전달받은 메소드를 출력하는 메소드
