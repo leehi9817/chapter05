@@ -49,7 +49,9 @@ public class Person {
 		return "Person [name=" + name + ", hp=" + hp + ", company=" + company + "]";
 	}
 	
-	
+	public String info() {
+		return (name + "," + hp + "," + company);
+	}
 	
 	
 	

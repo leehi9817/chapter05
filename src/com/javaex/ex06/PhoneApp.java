@@ -57,25 +57,39 @@ public class PhoneApp {
 		String hp = dArray[1];
 		String company = dArray[2];
 		
-		Person p02 = new Person(name, hp, company);
+		Person p01 = new Person(name, hp, company);
 		
 		//입력받은 데이터 리스트에 추가
-		pList.add(p02);
+		pList.add(p01);
+		
+		//화면출력
+		listPrint(pList);
 		
 		//리스트 전체를 파일로 쓰기
 		Writer fw = new FileWriter("C:\\javaStudy\\file\\PhoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		for(Person p03 : pList) {
-			bw.write(p03.getName() + ",");
-			bw.write(p03.getHp() + ",");
-			bw.write(p03.getCompany());
+		for(Person p02 : pList) {
+			String str = p02.info();
+			bw.write(str);
 			bw.newLine();
 		}
 		
 		br.close();
 		bw.close();
 		sc.close();
+		
+	}
+	
+	//전달받은 메소드를 출력하는 메소드
+	public static void listPrint(List<Person> pList) {
+		
+		for(Person p : pList) {
+			System.out.println("이름:" + p.getName());
+			System.out.println("핸드폰:" + p.getHp());
+			System.out.println("회사:" + p.getCompany());
+			System.out.println("");
+		}
 		
 	}
 
